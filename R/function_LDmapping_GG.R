@@ -1,5 +1,5 @@
 
-AllLDmapping <- function(obsvX, obsvY, mind, maxd, mn = "latmean",
+AllLDmappingGG <- function(obsvX, obsvY, mind, maxd, mn = "latmean",
 													inner_n = input$n,
 													inner_Gcolmn = input$Gcolmn,
 													inner_actvGcolmn = input$actvGcolmn,
