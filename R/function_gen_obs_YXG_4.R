@@ -1,7 +1,7 @@
 
 generate_obs_G <- function(n = 20, Gcolmn = 6,actvGcolmn = 3,
 														latG1H1,latG2H2,latG,D = 0,Gprob = 0.2,gprob = 0.2,
-														Gcenter = FALSE,Gmean = c("obsmean","latmean","expect")){
+														Gcenter = FALSE,Gmean = c("obsmean","latmean","expect","none")){
   set.seed(12345678)
   Gmean <- tolower(Gmean)
   Gmean <- match.arg(Gmean)
@@ -46,7 +46,7 @@ generate_obs_G <- function(n = 20, Gcolmn = 6,actvGcolmn = 3,
 	  }
 	  
 	  
-	  if(Gcenter){
+	  if(Gcenter & (Gmean != "none")){
 	  	if(Gmean == "obsmean"){
 	  		G <- demean(G)
 	  	}else if(Gmean == "latmean"){
@@ -63,7 +63,7 @@ generate_obs_G <- function(n = 20, Gcolmn = 6,actvGcolmn = 3,
 
 generate_obs_X <- function(Xcolmn = 8,actvXcolmn = 4,latx,var_obs_x = 1,var_obs_h = 1,
 													betax_g = 3, betax_h  =  3,Gprob = 0.2,
-													Xcenter = FALSE, Xmean = c("obsmean","latmean","expect")){
+													Xcenter = FALSE, Xmean = c("obsmean","latmean","expect","none")){
 		set.seed(12345678)
 		Xmean <- tolower(Xmean)
 		Xmean <- match.arg(Xmean)
@@ -76,7 +76,7 @@ generate_obs_X <- function(Xcolmn = 8,actvXcolmn = 4,latx,var_obs_x = 1,var_obs_
 	  X <- apply(latx,1,function(x){c(rnorm(m,x[1],sqrt(var_obs_x)),rnorm(q-m,x[2],sqrt(var_obs_h)))})
 	  X <- t(X)
 	  
-	  if(Xcenter){
+	  if(Xcenter & (Xmean != "none")){
 	  	if(Xmean == "obsmean"){
 	  		X <- demean(X)
 	  	}else if(Xmean == "latmean"){
