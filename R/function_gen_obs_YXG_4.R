@@ -64,7 +64,7 @@ generate_obs_G <- function(n = 20, Gcolmn = 6,actvGcolmn = 3,
 generate_obs_X <- function(Xcolmn = 8,actvXcolmn = 4,latx,var_obs_x = 1,var_obs_h = 1,
 													betax_g = 3, betax_h  =  3,Gprob = 0.2,
 													Xcenter = FALSE, Xmean = c("obsmean","latmean","expect","none")){
-		#set.seed(12345678)
+		set.seed(123456)
 		Xmean <- tolower(Xmean)
 		Xmean <- match.arg(Xmean)
   
