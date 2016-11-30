@@ -1,5 +1,5 @@
 
-AllLDmappingGG <- function(obsvX, obsvY, mind, maxd, mn = "latmean",
+AllLDmappingGG <- function(obsvX, obsvY, mind, maxd, mn = "latmean",dots = 10,
 													inner_n = input$n,
 													inner_Gcolmn = input$Gcolmn,
 													inner_actvGcolmn = input$actvGcolmn,
@@ -14,7 +14,7 @@ AllLDmappingGG <- function(obsvX, obsvY, mind, maxd, mn = "latmean",
 		Group <- c()
 		
 		for(i in c(FALSE,TRUE)){
-				for(LD in c(0,seq(mind + 0.001, maxd - 0.001, (maxd - mind - 0.002)/50))){
+				for(LD in c(0,seq(mind + 0.001, maxd - 0.001, (maxd - mind - 0.002)/dots))){
 						obsvG <- generate_obs_G(n = inner_n,
 														Gcolmn = inner_Gcolmn,
 														actvGcolmn = inner_actvGcolmn,
