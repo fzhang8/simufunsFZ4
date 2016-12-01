@@ -1,5 +1,5 @@
 
-AllLDmappingGG <- function(obsvX, obsvY, mind, maxd, mn = "latmean",dots = 10,
+AllLDmappingGG <- function(obsvX, obsvY, mind, maxd, mn = "latmean",dots = 10,siid = 12345,
 													inner_n = input$n,
 													inner_Gcolmn = input$Gcolmn,
 													inner_actvGcolmn = input$actvGcolmn,
@@ -18,6 +18,7 @@ AllLDmappingGG <- function(obsvX, obsvY, mind, maxd, mn = "latmean",dots = 10,
 						obsvG <- generate_obs_G(n = inner_n,
 														Gcolmn = inner_Gcolmn,
 														actvGcolmn = inner_actvGcolmn,
+														sid = siid,
 														latG1H1 = inner_latG1H1,
 														latG2H2 = inner_latG2H2,
 														latG = inner_latG,
@@ -28,9 +29,9 @@ AllLDmappingGG <- function(obsvX, obsvY, mind, maxd, mn = "latmean",dots = 10,
 														Gmean = mn)
 														
 						result <- svd_analysis(obsvY,obsvX,obsvG$G)
-						
+						rm(obsvG)
 						fsp <- result$singulars[1] / sum(result$singulars) * 100
-						
+						rm(result)
 						D <- c(D, LD)
 						Percentage <- c(Percentage, fsp)
 						Group <- c(Group, ifelse(i,"YES","NO"))

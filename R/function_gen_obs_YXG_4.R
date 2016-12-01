@@ -1,8 +1,8 @@
 
-generate_obs_G <- function(n = 20, Gcolmn = 6,actvGcolmn = 3,
+generate_obs_G <- function(n = 20, Gcolmn = 6,actvGcolmn = 3,sid = 12345,
 														latG1H1,latG2H2,latG,D = 0,Gprob = 0.2,gprob = 0.2,
 														Gcenter = FALSE,Gmean = c("obsmean","latmean","expect","none")){
-  set.seed(12345678)
+  set.seed(sid)
   Gmean <- tolower(Gmean)
   Gmean <- match.arg(Gmean)
   
